@@ -1,4 +1,4 @@
-package operators;
+
 public class ops {
 
 public static void main(String[] args) {
