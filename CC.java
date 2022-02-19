@@ -72,7 +72,7 @@ class TokenType {
         }
         }
 
-    	return false;
+    	return true;
 	}
 	
 	boolean isOperator() {
