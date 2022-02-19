@@ -20,8 +20,6 @@ public class CC {
                 token.Token();
                 System.out.print("\n---------------\n\n");
             }
-            // System.out.println(token.isOperator());
-            // System.out.println(token.isDelimeters());
         } 
         catch(Exception e){System.out.println(e);}
 
@@ -54,9 +52,24 @@ class TokenType {
         // return Tokens;
     }
 	
-	boolean isKeyword(String s) {
+	boolean isKeyword() {
 		
-		return false;
+        int a = 4, b = 20 ;
+    	
+        //String str1 = "int float boolean string while until if else true false a = 5 ;";
+                
+        String keywords[]={"int", "float", "boolean", "string", "while", "until", "if", "else", "true", "false"};   
+
+        for(int i =0; i < keywords.length; i++) {
+        	
+        if (this.S.substring(a, b).contains(keywords[i])) {
+            System.out.println("The Keyword " + keywords[i] +" is found in given string");
+
+           return true;
+        }
+        }
+
+    	return false;
 	}
 	
 	boolean isOperator() {
