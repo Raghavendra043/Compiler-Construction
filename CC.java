@@ -15,8 +15,13 @@ public class CC {
                 line+=1;
                 System.out.println(s.nextLine());
                 ArrayList<String> Token = new ArrayList<String>();
-                Token = token.Token(s.nextLine());
+            //    Token = token.Token(s.nextLine());
             }
+
+            
+            System.out.println(token.isOperator());
+
+
             
         } 
         catch(Exception e){System.out.println(e);}
@@ -40,11 +45,11 @@ class TokenType {
     ArrayList<String> Token(){
         ArrayList<String> Tokens = new ArrayList<String>();
 
-        while(this.pos < this.S.length()){
-            if(getCurrent() == 46){this.pos+=1;}
-            else if(getCurrent() == hash) {Tokens.add();break;}
-
-        }
+        //while(this.pos < this.S.length()){
+        //    if(getCurrent() == 46){this.pos+=1;}
+        //    else if(getCurrent() == hash) {Tokens.add();break;}
+//
+//        }
         
         return Tokens;
     }
@@ -54,11 +59,19 @@ class TokenType {
 		return false;
 	}
 	
-	boolean isOperator(String s) {
+	boolean isOperator() {
+    if(getCurrent()=='+'){
+
+    return true;
+    }
+
+
 		
 		return false;
 	}
 	boolean isDelimeters(String s) {
+
+
 		
 		return false;
 	}
