@@ -68,11 +68,12 @@ class TokenType {
         	
         if (this.S.substring(a, b).contains(keywords[i])) {
             System.out.println("The Keyword " + keywords[i] +" is found in given string");
-           
+
+           return true;
         }
         }
 
-    	return true;
+    	return false;
 	}
 	
 	boolean isOperator() {
