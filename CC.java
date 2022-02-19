@@ -54,24 +54,54 @@ class TokenType {
 	
 	boolean isKeyword() {
 		
-        int a = 4, b = 20 ;
+        int a = 0, b = 5 ;
     	
-        //String str1 = "int float boolean string while until if else true false a = 5 ;";
+        //String str1 = "float";
                 
         String keywords[]={"int", "float", "boolean", "string", "while", "until", "if", "else", "true", "false"};   
 
         for(int i =0; i < keywords.length; i++) {
         	
-        if (this.S.substring(a, b).contains(keywords[i])) {
+        if (this.S.substring(a, b).equals(keywords[i])) {
             System.out.println("The Keyword " + keywords[i] +" is found in given string");
-
-           return true;
-        }
+            return true;
+        } 
+        
         }
 
     	return false;
 	}
+	boolean isIdentifier(){
+        int a = 0, b = 5 ;
+	    int i = a, p=0;
 	
+	
+		if((this.S.charAt(i)>=65 && this.S.charAt(i)<=90) || (this.S.charAt(i)>=97 && this.S.charAt(i)<=122)) 
+		{
+			
+            i++; 
+            p++;
+            if( b-i > 1 ) 
+            {
+	            while ((this.S.charAt(i)>=65 && this.S.charAt(i)<=90) || (this.S.charAt(i)>=97 && this.S.charAt(i)<=122) || (this.S.charAt(i)==95) || (this.S.charAt(i)>=48 && this.S.charAt(i)<=57)) 
+				{ 
+	            	i++;
+	            	p++;
+	           		if (i == b) {
+	           			break;
+	           		}
+	           		
+	           		
+	             }
+            }
+        }
+		if( p == b-a ) {
+			System.out.println(this.S.substring(a, b) + " is a identifier");
+            return true;
+		}
+
+        return false;
+    }
 	boolean isOperator() {
         int check = 0;
 
