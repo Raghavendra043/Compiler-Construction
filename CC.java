@@ -20,6 +20,7 @@ public class CC {
 
             
             System.out.println(token.isOperator());
+            System.out.println(token.isDelimeters());
 
 
             
@@ -60,20 +61,167 @@ class TokenType {
 	}
 	
 	boolean isOperator() {
-    if(getCurrent()=='+'){
 
-    return true;
-    }
+        switch(S.charAt(this.pos))
+        {
+        case '+':    
+            if (this.pos+1 < S.length() && S.charAt(this.pos+1)=='=')
+            {
+            System.out.println(S.charAt(this.pos)+"= is a operator at position "+this.pos);
+            }
+            else
+            {
+                System.out.println(S.charAt(this.pos)+" is a operator at position "+this.pos);	
+            }
+            
+            break;    
+        case '-':    
+            if (this.pos+1 < S.length() && S.charAt(this.pos+1)=='=')
+            {
+            System.out.println(S.charAt(this.pos)+"= is a operator at position "+this.pos);
+            }
+            else
+            {
+                System.out.println(S.charAt(this.pos)+" is a operator at position "+this.pos);	
+            }       
+            break;    
+        case '*':    
+            if (this.pos+1 < S.length() && S.charAt(this.pos+1)=='=')
+            {
+            System.out.println(S.charAt(this.pos)+"= is a operator at position "+this.pos);
+            }
+            else
+            {
+            System.out.println(S.charAt(this.pos)+" is a operator at position "+this.pos);	
+            }       
+            break;          
+        case '/':    
+            if (this.pos+1 < S.length() && S.charAt(this.pos+1)=='=')
+            {
+            System.out.println(S.charAt(this.pos)+"= is a operator at position "+this.pos);
+            }
+            else
+            {
+            System.out.println(S.charAt(this.pos)+" is a operator at position "+this.pos);	
+            } 
+            break;    
+        case '%': 
+            if (this.pos+1 < S.length() && S.charAt(this.pos+1)=='=')
+            {
+            System.out.println(S.charAt(this.pos)+"= is a operator at position "+this.pos);
+            }
+            else
+            {
+            System.out.println(S.charAt(this.pos)+" is a operator at position "+this.pos);	
+            }  
+            break;
+        case ':':    
+            if (this.pos+1 < S.length() && S.charAt(this.pos+1)=='=')
+            {
+            System.out.println(S.charAt(this.pos)+"= is a operator at position "+this.pos);
+            }
+            else
+            {
+            System.out.println(S.charAt(this.pos)+" is a operator at position "+this.pos);	
+            }  
+            break;   
+        case '>':
+            if (this.pos+1 < S.length() && S.charAt(this.pos+1)=='=')
+            {
+            System.out.println(S.charAt(this.pos)+"= is a operator at position "+this.pos);
+            }
+            else
+            {
+            System.out.println(S.charAt(this.pos)+" is a operator at position "+this.pos);	
+            }  
+            break;
+        case '<':    
+            if (this.pos+1 < S.length() && S.charAt(this.pos+1)=='=')
+            {
+            System.out.println(S.charAt(this.pos)+"= is a operator at position "+this.pos);
+            }
+            else
+            {
+            System.out.println(S.charAt(this.pos)+" is a operator at position "+this.pos);	
+            }  
+            break;   
+        case '!':    
+            if (this.pos+1 < S.length() && S.charAt(this.pos+1)=='=')
+            {
+            System.out.println(S.charAt(this.pos)+"= is a operator at position "+this.pos);
+            }
+            else
+            {
+            System.out.println(S.charAt(this.pos)+" is a operator at position "+this.pos);	
+            }  
+            break;   
+        case '?':    
+            System.out.println(S.charAt(this.pos)+" is a operator at position "+this.pos); 
+            break;
+        case '=':    
+            if (this.pos+1 < S.length() && S.charAt(this.pos+1)=='=')
+            {
+            System.out.println(S.charAt(this.pos)+"= is a operator at position "+this.pos);
+            }
+            else
+            {
+            System.out.println(S.charAt(this.pos)+" is a operator at position "+this.pos);	
+            }  
+            break;  
+        case '&':    
+            if (this.pos+1 < S.length() && S.charAt(this.pos+1)=='&')
+            {
+            System.out.println(S.charAt(this.pos)+"& is a operator at position "+this.pos);
+            }
+            else
+            //System.out.println(S.charAt(this.pos)+" is a operator at position "+this.pos);      
+            break;
+        case '|':    
+            if (this.pos+1 < S.length() && S.charAt(this.pos+1)=='|')
+            {
+            System.out.println(S.charAt(this.pos)+"| is a operator at position "+this.pos);
+            }
+            else
+            //System.out.println(S.charAt(this.pos)+" is a operator at position "+this.pos);      
+            break;
+        }
 
 
 		
-		return false;
+		return true;
 	}
-	boolean isDelimeters(String s) {
+	boolean isDelimeters() {
 
+        switch(S.charAt(this.pos))
+        {
+            case '{':    
+                System.out.println(S.charAt(this.pos)+": is a delimiter at position "+this.pos);   
+                break;    
+            case '}':    
+                System.out.println(S.charAt(this.pos)+": is a delimiter at position "+this.pos);      
+                break;    
+            case '[':    
+                System.out.println(S.charAt(this.pos)+": is a delimiter at position "+this.pos);      
+                break;         
+            case ']':    
+                System.out.println(S.charAt(this.pos)+": is a delimiter at position "+this.pos);   
+                break;    
+            case '(':    
+                System.out.println(S.charAt(this.pos)+": is a delimiter at position "+this.pos);
+                break;   
+            case ')':    
+                System.out.println(S.charAt(this.pos)+": is a delimiter at position "+this.pos);  
+                break;    
+            case ';':    
+                System.out.println(S.charAt(this.pos)+": is a delimiter at position "+this.pos);   
+                break; 
+            case ',':    
+                System.out.println(S.charAt(this.pos)+": is a delimiter at position "+this.pos);    
+                break; 
+        }
 
 		
-		return false;
+		return true;
 	}
 	boolean isInt(String s) {
 
