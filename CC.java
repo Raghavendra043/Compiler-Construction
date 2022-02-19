@@ -21,6 +21,7 @@ public class CC {
             
             System.out.println(token.isOperator());
             System.out.println(token.isDelimeters());
+            System.out.println(token.isKeyword());
 
 
             
@@ -55,7 +56,7 @@ class TokenType {
         return Tokens;
     }
 	
-	boolean isKeyword(String s) {
+	boolean isKeyword() {
 		
         int a = 4, b = 20 ;
     	
@@ -68,7 +69,7 @@ class TokenType {
         if (this.S.substring(a, b).contains(keywords[i])) {
             System.out.println("The Keyword " + keywords[i] +" is found in given string");
            
-        } 
+        }
         }
 
     	return false;
