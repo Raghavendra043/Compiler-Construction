@@ -1,5 +1,8 @@
-int main(){
+# this is an example # of a comment 
+
+int BRO {
     int a = 5 ;
     int b = 6 ;
     float c = 0.38 ;
+    bruh("This is the example of a printf Statement");
 }

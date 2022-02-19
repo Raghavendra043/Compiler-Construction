@@ -1,0 +1,7 @@
+key words = [
+     BRO, int, decimal, boolean, string, while, until, if, else, true, false,for
+]
+
+identifier = [
+    bruh
+]

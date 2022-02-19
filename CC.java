@@ -10,7 +10,7 @@ public class CC {
             int line = 0;
             File f = new File("test.txt");
             Scanner s = new Scanner(f);
-            TokenType token =  new TokenType();
+            TokenType token =  new TokenType("wf");
             while (s.hasNext()) {
                 line+=1;
                 System.out.println(s.nextLine());
@@ -27,11 +27,26 @@ public class CC {
 
 
 class TokenType {
+    
+    String S;
+    int pos = 0;
 
-    ArrayList<String> Token(String s){
+    TokenType (String S){
+        this.S =  S;
+    }
+    public int getCurrent() {
+        return this.S.charAt(this.pos);
+    }
+    ArrayList<String> Token(){
+        ArrayList<String> Tokens = new ArrayList<String>();
 
+        while(this.pos < this.S.length()){
+            if(getCurrent() == 46){this.pos+=1;}
+            else if(getCurrent() == hash) {Tokens.add();break;}
+
+        }
         
-        return 1;
+        return Tokens;
     }
 	
 	boolean isKeyword(String s) {
@@ -153,3 +168,4 @@ class TokenType {
 	}
 	
 }
+
