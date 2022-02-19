@@ -57,7 +57,21 @@ class TokenType {
 	
 	boolean isKeyword(String s) {
 		
-		return false;
+        int a = 4, b = 20 ;
+    	
+        //String str1 = "int float boolean string while until if else true false a = 5 ;";
+                
+        String keywords[]={"int", "float", "boolean", "string", "while", "until", "if", "else", "true", "false"};   
+
+        for(int i =0; i < keywords.length; i++) {
+        	
+        if (this.S.substring(a, b).contains(keywords[i])) {
+            System.out.println("The Keyword " + keywords[i] +" is found in given string");
+           
+        } 
+        }
+
+    	return false;
 	}
 	
 	boolean isOperator() {
