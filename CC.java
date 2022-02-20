@@ -41,27 +41,52 @@ class TokenType {
     }
     void Token(){
         ArrayList<String> Tokens = new ArrayList<String>();
-
+        int start = 0;
+        int end = 0;
+        
         while(this.pos < this.S.length()){
-            if(getCurrent() == ' ' ){this.pos+=1;}           
-            else if(isDelimeters()){this.pos+=1;}
-            else if(isOperator()){this.pos+=1;}
-            else{this.pos+=1;}
+            int state = 0;
+            if(getCurrent() == '#'){
+                System.out.println(this.S.substring(this.pos, this.S.length()-1)+" is Comment");
+                break;
+            }
+            else if(getCurrent() == ' ' ){
+                this.pos+=1;if(start==end){start+=1;end+=1;}else{
+                    state = 1; 
+                }
+            }           
+            else if(isDelimeters()){this.pos+=1;state = 1;}
+            else if(isOperator()){this.pos+=1;state = 1;}
+            else{this.pos+=1;end+=1;}
+
+            if(state == 1){
+                if(isKeyword(start, end)){
+                } else if(isIdentifier(start, end)){
+                } else if(isInt(this.S.substring(start, end))){
+                    System.out.println(this.S.substring(start, end)+" is an int");
+                } else if(isFloat(this.S.substring(start, end))){
+                    System.out.println(this.S.substring(start, end)+" is a float");
+                } else{
+                    //System.out.println(this.S.substring(start, end)+" is nothing");
+                }
+                end = this.pos;
+                start = end;
+                state = 0;
+            }
        }
         
         // return Tokens;
     }
 	
-	boolean isKeyword() {
+	boolean isKeyword(int a, int b) {
 		
-        int a = 0, b = 5 ;
+        // int a = 0, b = 5 ;
     	
         //String str1 = "float";
                 
-        String keywords[]={"int", "float", "boolean", "string", "while", "until", "if", "else", "true", "false"};   
+        String keywords[]={"int", "float", "boolean", "string", "while", "until", "if", "else", "true", "false", "BRO", "bruh"};   
 
         for(int i =0; i < keywords.length; i++) {
-        	
         if (this.S.substring(a, b).equals(keywords[i])) {
             System.out.println("The Keyword " + keywords[i] +" is found in given string");
             return true;
@@ -71,9 +96,11 @@ class TokenType {
 
     	return false;
 	}
-	boolean isIdentifier(){
-        int a = 0, b = 5 ;
+	boolean isIdentifier(int a, int b){
+        // int a = 0, b = 5 ;
 	    int i = a, p=0;
+
+        if(a==b){return false;}
 	
 	
 		if((this.S.charAt(i)>=65 && this.S.charAt(i)<=90) || (this.S.charAt(i)>=97 && this.S.charAt(i)<=122)) 
@@ -112,6 +139,7 @@ class TokenType {
             {
             System.out.println(this.S.charAt(this.pos)+"= is a operator at position "+this.pos);
             check = 1;
+            this.pos+=1;
             }
             else
             {
@@ -125,6 +153,7 @@ class TokenType {
             {
             System.out.println(this.S.charAt(this.pos)+"= is a operator at position "+this.pos);
             check+=1;
+            this.pos+=1;
             }
             else
             {
@@ -137,6 +166,7 @@ class TokenType {
             {
             System.out.println(this.S.charAt(this.pos)+"= is a operator at position "+this.pos);
             check+=1;
+            this.pos+=1;
             }
             else
             {
@@ -149,6 +179,7 @@ class TokenType {
             {
             System.out.println(this.S.charAt(this.pos)+"= is a operator at position "+this.pos);
             check+=1;
+            this.pos+=1;
             }
             else
             {
@@ -161,6 +192,7 @@ class TokenType {
             {
             System.out.println(this.S.charAt(this.pos)+"= is a operator at position "+this.pos);
             check+=1;
+            this.pos+=1;
             }
             else
             {
@@ -173,6 +205,7 @@ class TokenType {
             {
             System.out.println(this.S.charAt(this.pos)+"= is a operator at position "+this.pos);
             check+=1;
+            this.pos+=1;
             }
             else
             {
@@ -185,6 +218,7 @@ class TokenType {
             {
             System.out.println(this.S.charAt(this.pos)+"= is a operator at position "+this.pos);
             check+=1;
+            this.pos+=1;
             }
             else
             {
@@ -197,6 +231,7 @@ class TokenType {
             {
             System.out.println(this.S.charAt(this.pos)+"= is a operator at position "+this.pos);
             check+=1;
+            this.pos+=1;
             }
             else
             {
@@ -209,6 +244,7 @@ class TokenType {
             {
             System.out.println(this.S.charAt(this.pos)+"= is a operator at position "+this.pos);
             check+=1;
+            this.pos+=1;
             }
             else
             {
@@ -225,6 +261,7 @@ class TokenType {
             {
             System.out.println(this.S.charAt(this.pos)+"= is a operator at position "+this.pos);
             check+=1;
+            this.pos+=1;
             }
             else
             {
@@ -237,6 +274,7 @@ class TokenType {
             {
             System.out.println(this.S.charAt(this.pos)+"& is a operator at position "+this.pos);
             check+=1;
+            this.pos+=1;
             }
             else{
             //System.out.println(this.S.charAt(this.pos)+" is a operator at position "+this.pos); }
@@ -247,6 +285,7 @@ class TokenType {
             {
             System.out.println(this.S.charAt(this.pos)+"| is a operator at position "+this.pos);
             check+=1;
+            this.pos+=1;
             }
             // else
             //System.out.println(this.S.charAt(this.pos)+" is a operator at position "+this.pos);      
@@ -398,7 +437,7 @@ class TokenType {
             }
 
         }
-        if(state != -1){
+        if(state != -1 && state != 0){
             return true;
         }
 		return false;
