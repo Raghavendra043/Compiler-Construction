@@ -4,16 +4,37 @@
 int main()
 {
     char Str[1000];
-    char arr[1000];
-    int i,j,a,b,k=0;
+    int i,j;
     scanf("%s", Str);
     for (i = 0; Str[i] != '\0'; ++i);
-    for (j = 0; Str[j] !='"'; ++j);
-    for (a = j+1; Str[a] != '"'; ++a);
-    b = a - j - 1;
-    for (int z = 0; z < b; z++){
-        arr[z] = Str[j+1];
-        printf("%c",arr[z]);
-        j++;
+    for (j = 0; j < i; j++){
+        if(Str[j] == '"'){
+            j++;
+            goto there;
+
+        }
     }
+    return 0;
+    there:
+    for (j ; j < i; j++){
+        if(Str[j] == '\\'){
+                j++;
+            if(Str[j] == '\\' || '"' || 't' || 'n' || 'r'){
+                return 1;
+
+
+            }
+             else{
+                return 0;
+                break;
+            }
+
+        }
+        if(Str[j] == '"'){
+           return 1;
+           break;
+
+        }
+    }
+
 }
