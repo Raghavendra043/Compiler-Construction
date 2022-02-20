@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include <string.h>
-
 int main()
 {
     char Str[1000];
-    int i,j;
+    int i,j,k;
     scanf("%s", Str);
     for (i = 0; Str[i] != '\0'; ++i);
         if(Str[0] == '"'){
@@ -17,10 +16,11 @@ int main()
 
     there:
     for (j=1 ; j < i; j++){
-            if(Str[j] == ' '){
+
+        if(Str[j] == ' '){
                 continue;
             }
-        if(Str[j] == '\\'){
+       else if(Str[j] == '\\'){
                 j++;
             if(Str[j] == '\\'){
                 continue;
@@ -33,7 +33,6 @@ int main()
             }
             else if(Str[j] == 'n'){
                 continue;
-
             }
             else if(Str[j] == 'r'){
                 continue;
@@ -44,16 +43,18 @@ int main()
             }
 
         }
-        if(Str[j] == '"'){
-                if(j = i - 1){
+       else if(Str[j] == '"'){
+
+           break;
+
+        }
+    }
+
+             if(j == i - 1){
                     return 1;
                 }
                 else{
                     return 0;
                 }
-
-           break;
-        }
-    }
 
 }
