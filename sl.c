@@ -19,10 +19,21 @@ int main()
     for (j ; j < i; j++){
         if(Str[j] == '\\'){
                 j++;
-            if(Str[j] == '\\' || '"' || 't' || 'n' || 'r'){
-                return 1;
+            if(Str[j] == '\\'){
+                continue;
+            }
+            else if(Str[j] == '"'){
+                continue;
+            }
+            else if(Str[j] == 't'){
+                continue;
+            }
+            else if(Str[j] == 'n'){
+                continue;
 
-
+            }
+            else if(Str[j] == 'r'){
+                continue;
             }
              else{
                 return 0;
@@ -33,7 +44,6 @@ int main()
         if(Str[j] == '"'){
            return 1;
            break;
-
         }
     }
 
