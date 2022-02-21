@@ -13,10 +13,12 @@ void main(void) {
 int x;
  t^ = 2.0.0;
 x = +1004500;
+y=4+2;
+z = a+23;
 while (x <= 10) {
 write(x);
 write(fact(x));
 writeln();
-x = x + 1;
+x = x +1;
 }
 }

@@ -32,6 +32,7 @@ class TokenType {
     
     String S;
     int pos = 0;
+    String latest;
 
     TokenType (String S){
         this.S =  S;
@@ -59,16 +60,18 @@ class TokenType {
                 end = this.pos;
                 start = end;
             }
-            else if(isDelimeters()){this.pos+=1;state = 1;}
-            else if(isOperator()){this.pos+=1;state = 1;}
+            else if(isDelimeters()){this.latest="deli";this.pos+=1;state = 1;}
+            else if(isOperator()){this.latest="op";this.pos+=1;state = 1;}
             else{this.pos+=1;end+=1;}
 
             if(state == 1){
                 if(isKeyword(start, end)){
-                } else if(isIdentifier(start, end)){
+                } else if(isIdentifier(start, end)){ this.latest = "id";
                 } else if(isInt(this.S.substring(start, end))){
+                    this.latest = "int";
                     System.out.println(this.S.substring(start, end)+" is an int");
                 } else if(isFloat(this.S.substring(start, end))){
+                    this.latest = "float";
                     System.out.println(this.S.substring(start, end)+" is a float");
                 } else{
                     if(start==end || (this.pos<this.S.length() && getCurrent() == ' ')){}else {
@@ -148,7 +151,7 @@ class TokenType {
             }
             else
             {
-                if(this.pos+1<this.S.length() && isInt( String.valueOf((this.S.charAt(this.pos+1)) )  ) ){
+                if(this.pos+1<this.S.length() && isInt( String.valueOf((this.S.charAt(this.pos+1)) )  ) && this.latest =="op" && this.S.charAt(this.pos-1) == ' '){
                     check = 0;
                 }else{
                 System.out.println(this.S.charAt(this.pos)+" is a operator at position "+this.pos);	
