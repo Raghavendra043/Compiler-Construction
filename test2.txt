@@ -1,5 +1,7 @@
 int main(){
-    #iuoll
-    string hu := "i ol";
-    float := +5.33;
+    string str := "sgkj\n";
+    float x := -2.33;
+    int y := 2+2;
+    
+    #i dont know
 }
