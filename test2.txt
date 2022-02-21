@@ -1,1 +1,3 @@
-"he\nhe
+int main(){
+    float x;
+}
