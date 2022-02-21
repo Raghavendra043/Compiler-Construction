@@ -54,7 +54,11 @@ class TokenType {
                 this.pos+=1;if(start==end){start+=1;end+=1;}else{
                     state = 1; 
                 }
-            }           
+            } else if(getCurrent() == '"'){
+                isStringLiteral();
+                end = this.pos;
+                start = end;
+            }
             else if(isDelimeters()){this.pos+=1;state = 1;}
             else if(isOperator()){this.pos+=1;state = 1;}
             else{this.pos+=1;end+=1;}
@@ -67,7 +71,8 @@ class TokenType {
                 } else if(isFloat(this.S.substring(start, end))){
                     System.out.println(this.S.substring(start, end)+" is a float");
                 } else{
-                    //System.out.println(this.S.substring(start, end)+" is nothing");
+                    if(start==end || (this.pos<this.S.length() && getCurrent() == ' ')){}else {
+                    System.out.println("%"+this.S.substring(start, end)+"%is nothing"+start+","+end+","+this.pos);}
                 }
                 end = this.pos;
                 start = end;
@@ -143,8 +148,11 @@ class TokenType {
             }
             else
             {
+                if(this.pos+1<this.S.length() && isInt( String.valueOf((this.S.charAt(this.pos+1)) )  ) ){
+                    check = 0;
+                }else{
                 System.out.println(this.S.charAt(this.pos)+" is a operator at position "+this.pos);	
-                check+=1;
+                check+=1;}
             }
             
             break;    
@@ -343,22 +351,28 @@ class TokenType {
 		return false;
 	}
 	boolean isInt(String s) {
-
         int state = 0;
         for(int j=0;j<s.length();j++){
             int Ch = s.charAt(j);
             switch(state){
                 case 0: {
                     if(Ch == 48){
-                        state = 2;
+                        state = 1;
                         break;
                     } else if(Ch > 48 && Ch<=57){
-                        state = 1;
+                        state = 2;
+                        break;
+                    } else if(Ch == 43 || Ch == 45){
+                        state = 3;
                         break;
                     }
                 }
                 case 1: {
-                    if(Ch >=48 && Ch<=57){
+                    if(Ch==48){
+                        state = -1;
+                        break;
+                    }
+                    else if(Ch >48 && Ch<=57){
                         state = 1;
                         break;
                     } else {
@@ -367,11 +381,18 @@ class TokenType {
                     }
                 }
                 case 2: {
-                    if(Ch ==48){
-                        state = -1;
+
+                    if(Ch>=48 && Ch<=57){
+                        state = 2;
                         break;
-                    } else if(Ch>48 && Ch<=57){
-                        state = 1;
+                    }
+                }
+                case 3:{
+                    if(Ch>48 && Ch<=57){
+                        state = 2;
+                        break;
+                    } else if(Ch == 48){
+                        state=1;
                         break;
                     }
                 }
@@ -381,7 +402,7 @@ class TokenType {
             }
 
         }
-        if(state ==1){
+        if(state ==1 || state == 2){
             return true;
         }
 		return false;
@@ -442,9 +463,44 @@ class TokenType {
         }
 		return false;
 	}
-	boolean isStringLiteral(String s) {
-		
-		return false;
+	void isStringLiteral() {
+        int state = 0;
+        int f = 0;
+        int start = this.pos;
+        int end = start;
+        while(this.pos < this.S.length()){
+
+            switch(state){
+                case 0:{
+                    if(getCurrent()=='"'){state=1;this.pos+=1;end+=1;}
+                    break;
+                }
+                case 1:{
+                    if(getCurrent()=='"'){
+                        this.pos+=1;
+                        end+=1;
+                        f= 1;
+                    } else if(getCurrent() == 47 ){
+                        if(this.pos+1<this.S.length() && (this.S.charAt(this.pos+1) == 'n' || this.S.charAt(this.pos+1) == 'r' || this.S.charAt(this.pos+1) == 't') ){
+                            this.pos+=1;
+                            state=1;end+=1;
+                        }else{
+                            state = 1;end+=1;this.pos+=1;
+                        }
+                    }else{
+                        state = 1;this.pos+=1;end+=1;
+                    }
+                    break;
+                }
+            }
+            if(f==1){
+                System.out.println(this.S.substring(start, end)+"& is a String literal");
+                break;
+            }
+        }
+        if(f!=1){
+            System.out.println("Error");
+        }
 	}
 	
 }
