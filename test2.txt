@@ -1,7 +1,3 @@
-int main(){
-    string str := "sgkj\n";
-    float x := -2.33;
-    int y := 2+2;
-    
-    #i dont know
+int
+    +
 }
