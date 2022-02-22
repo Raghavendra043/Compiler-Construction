@@ -1,9 +1,7 @@
+"iouj
+jafnj njn"
+#sdgk
 int main(){
-    int x := 5;
-    string st := "asf\n";
 
-    #dsfnjfn
-
-    float = +2.3;
-    
+    float := -0.23;
 }
