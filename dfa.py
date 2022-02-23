@@ -31,6 +31,9 @@ def DFA():
         else:
             final = tokens[IND_ID]
             tokenName = TokenNames[IND_ID]
+    elif state[IND_SP_COMM] == '1' and state[IND_OP] == '1':
+        final = tokens[IND_SP_COMM]
+        tokenName = TokenNames[IND_SP_COMM]
     elif state[IND_INT] == '1' and state[IND_FP] == '1' and state[IND_OP] == '1':
         final = tokens[IND_OP]
         tokenName = TokenNames[IND_OP]
