@@ -1,6 +1,6 @@
-from constants import *
+from Constants import *
 from utils import binUtil, tokenNum, numLines
-from scanner import getNext
+from Scanner import getNext
 
 str = None
 
