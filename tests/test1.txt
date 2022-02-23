@@ -1,0 +1,20 @@
+/* This is test case program 
+There are no lexical errors in this program */
+
+int main(){
+    int i := 32;
+    float f := 3.5;
+    string str := "Hello World\n";
+    if (i == 32){
+        j := 3 + 2;
+    }
+
+    /* just anotha comment */
+    
+    while(true){
+        f := f - 1.2;
+    }
+    return 1;
+}
+
+/* end of program */

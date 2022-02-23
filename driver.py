@@ -2,13 +2,17 @@ import sys
 import dfa
 from Scanner import bindStream, setLP, errorRead
 from Constants import EOF
+from utils import trim
 
 if __name__ == '__main__':
+    if len(sys.argv) == 1:
+        print('Please supply a file from tests folder as an argument in the format: tests/[fileName].txt')
+        quit()
     with open(sys.argv[1], 'r', 1) as f:
         bindStream(f)   # Binds the file input stream to the Scanner
         eof = False
         lp, lineNo = 0, 1
-        with open('Output_'+sys.argv[1], 'w') as o:
+        with open('outputs/output_'+trim(sys.argv[1]), 'w') as o:
             o.truncate()
             while not eof:
                 setLP(lp)
@@ -23,8 +27,8 @@ if __name__ == '__main__':
                 # to skip the line and move to the next line if there is one.
                 if nextToken == None:   
                     lp = dfa.panic_mode()
-                    o.write('----Error at Line '+str(lineNo)+
-                            ': '+errorRead()+'\n')
+                    o.write('--Error at Line '+str(lineNo)+
+                            ':\n\t'+errorRead()+'\n')
                     if lp == -1:
                         eof = 1
                     else:

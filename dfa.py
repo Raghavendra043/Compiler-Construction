@@ -1,5 +1,6 @@
+from os import stat
 from Constants import *
-from utils import binUtil, tokenNum
+from utils import binUtil, tokenNum, numLines
 from Scanner import getNext
 
 str = None
@@ -80,7 +81,7 @@ def isSpaceOrComm():
                         lines += 1
                     state = 'sp'
                     fp += 1
-                elif str[fp] == '#':
+                elif str[fp] == '/':
                     state = 'comm'
                     fp += 1
                 else:
@@ -99,23 +100,34 @@ def isSpaceOrComm():
                     state = YES_SP_OR_COMM
 
             elif state == 'comm':
-                try:
-                    if str[fp] != '\n':
-                        state = 'comm'
-                        fp += 1
-                    else:
-                        fp += 1
-                        lines += 1
-                        state = YES_SP_OR_COMM
-                except(IndexError):
+                if str[fp] == '*':
+                    state = 'comm-content'
+                    fp+=1
+                else:
+                    return ('', fp, NONE, -1)
+            
+            elif state == 'comm-content':
+                if str[fp] != '*':
+                    state = 'comm-content'
+                    fp+=1
+                else:
+                    state = 'end-comm-1'
+                    fp+=1
+            
+            elif state == 'end-comm-1':
+                if str[fp] == '/':
                     state = YES_SP_OR_COMM
+                    fp+=1
+                else:
+                    state = 'comm-content'
+                    fp+=1
 
             elif state == YES_SP_OR_COMM:
                 try:
                     str[fp]
-                    return ('', fp, state, lines)
+                    return ('', fp, state, numLines(str[:fp]))
                 except(IndexError):
-                    return ('', EOF, YES_SP_OR_COMM, lines)
+                    return ('', EOF, YES_SP_OR_COMM, numLines(str[:fp]))
 
     except(IndexError):
         return ('', EOF, NONE, -1)
@@ -148,7 +160,7 @@ def isId():
     try:
         while True:
             if state == ID:
-                if str[fp] in charSet[:26]:
+                if str[fp] in charSet[:52]:
                     state = YES_ID
                     fp += 1
                 else:
