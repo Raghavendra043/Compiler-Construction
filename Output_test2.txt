@@ -1,0 +1,26 @@
+Line 3  Token 4  < Keyword   string >
+Line 3  Token 10  < Identifier   str >
+Line 3  Token 21  < Operator   := >
+Line 3  Token 38  < String Literal   "tyih\n jnjk" >
+Line 3  Token 36  < Delimiter   ; >
+Line 4  Token 10  < Identifier   void >
+Line 4  Token 10  < Identifier   main >
+Line 4  Token 34  < Delimiter   ( >
+Line 4  Token 10  < Identifier   void >
+Line 4  Token 35  < Delimiter   ) >
+Line 4  Token 30  < Delimiter   { >
+Line 5  Token 1  < Keyword   int >
+Line 5  Token 10  < Identifier   x >
+Line 5  Token 36  < Delimiter   ; >
+Line 6  Token 10  < Identifier   t >
+Line 7  Token 10  < Identifier   x >
+Line 7  Token 21  < Operator   := >
+Line 7  Token 11  < Operator   + >
+Line 7  Token 28  < Integer   1004500 >
+Line 7  Token 36  < Delimiter   ; >
+Line 8  Token 10  < Identifier   y >
+Line 8  Token 21  < Operator   := >
+Line 8  Token 28  < Integer   4 >
+Line 8  Token 11  < Operator   + >
+Line 8  Token 28  < Integer   2 >
+Line 8  Token 36  < Delimiter   ; >

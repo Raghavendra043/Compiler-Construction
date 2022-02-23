@@ -1,8 +1,11 @@
-NONE = 0b00000000
 EOF = -1
+
+#States
+NONE = 0b00000000
 SP_OR_COMM, KW, ID, OP, INT, FP, DEL, STR = 'sp_comm', 'k', 'id', 'op', 'int', 'fp', 'del', 'str'
 YES_SP_OR_COMM, YES_KW, YES_ID, YES_OP, YES_INT, YES_FP, YES_DEL, YES_STR = 0b10000000, 0b01000000, 0b00100000, 0b00010000, 0b00001000, 0b00000100, 0b00000010, 0b00000001
 
+#character set used in matching Identifier
 charSet = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
@@ -47,8 +50,8 @@ TokenNames = {
     IND_KW: 'Keyword',
     IND_ID: 'Identifier',
     IND_OP: 'Operator',
-    IND_INT: 'Integer Literal',
-    IND_FP: 'Floating Point Literal',
+    IND_INT: 'Integer',
+    IND_FP: 'Floating Point',
     IND_DEL: 'Delimiter',
     IND_STR: 'String Literal'
 }

@@ -1,16 +1,15 @@
-from numpy import isin
-from states_tokno import *
+from Constants import *
 from utils import binUtil, tokenNum
 from Scanner import getNext
 
 str = None
 
+#### The start of Main DFA. Returns the token if matched else None 
 def DFA():
     global str
     str = getNext()
-
     tokens, state, final, lineNo = [], 0b00000000, None, 0
-
+    
     tokens.append(isSpaceOrComm())
     tokens.append(isKeyword())
     tokens.append(isId())
@@ -55,8 +54,20 @@ def DFA():
     if final == None:
         tokenName = -1
     return (final, lineNo, tokenName)
+ 
+ 
+'''
+ Return foramt for all dfas below: (4-tuple)
+    (
+        Lexeme(if matched) or ''(if none of them match),
+        If matched: Length of lexeme or -1(EOF)(if it is the end of input stream). Else: garbage value depending on where it stopped matching,
+        final state(state numbers as shown in Constants.py). If not matched - 0b00000000(NONE state),
+        Token Number. If not matched then -1 (Except SpaceOrComm dfa which returns number of \n used for tracking line numbers)
+    )
+'''
         
-
+# DFA for matching spaces & comments. (Format of Comments same as that of python's single line comments)
+# The tokens returned are not printed rather they are used in keeping track of line numbers.
 def isSpaceOrComm():
     state = SP_OR_COMM
     fp = 0
@@ -110,6 +121,7 @@ def isSpaceOrComm():
         return ('', EOF, NONE, -1)
 
 
+#### DFA for matching Keywords.
 def isKeyword():
     fp = 0
     try:
@@ -129,6 +141,7 @@ def isKeyword():
         return ('', EOF, 0b00000000, -1)
 
 
+#### DFA for matching Identifiers
 def isId():
     state = ID
     fp = 0
@@ -154,7 +167,8 @@ def isId():
     except(IndexError):
         return ('', EOF, NONE, -1)
     
-    
+
+#### DFA for matching Operators
 def isOp():
     state = OP
     fp = 0
@@ -231,7 +245,8 @@ def isOp():
     except(IndexError):
         return ('', EOF, NONE, -1)
     
-    
+
+#### DFA for matching Integers
 def isInt():
     state = INT
     fp = 0
@@ -293,7 +308,8 @@ def isInt():
     except(IndexError):
         return ('', EOF, NONE, -1)
     
-    
+
+#### DFA for matching Floating Point Numbers
 def isFP():
     state = FP
     fp = 0
@@ -385,7 +401,8 @@ def isFP():
     except(IndexError):
         return ('', EOF, NONE, -1)
     
-    
+
+#### DFA for matching Delimiters
 def isDelimiter():
     fp = 0
     state = DEL
@@ -408,6 +425,7 @@ def isDelimiter():
         return ('', EOF, NONE, -1)
 
 
+#### DFA for matching String Literals
 def isStr():
     state = STR
     fp = 0
@@ -451,6 +469,7 @@ def isStr():
         return ('', EOF, NONE, -1)
 
 
+#### Panic Mode Recovery in case none of the above dfas give a match.
 def panic_mode():
     fp = 0
     while True:
