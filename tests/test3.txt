@@ -1,11 +1,12 @@
 void func1(int x, floay y){
-/* a function that 
-gives the value of x + y */
-
+/* a function 
+that 
+of x + y */
+String str;
 float z;
 z := (float)x + y;
 
 printf("The value of \"z\" is: ", z);
-return z;
+return z*5;
 
 }

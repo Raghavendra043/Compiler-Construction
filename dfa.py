@@ -1,6 +1,6 @@
-from Constants import *
+from constants import *
 from utils import binUtil, tokenNum, numLines
-from Scanner import getNext
+from scanner import getNext
 
 str = None
 
@@ -32,6 +32,7 @@ def DFA():
             tokenName = TokenNames[IND_ID]
     elif state[IND_SP_COMM] == '1' and state[IND_OP] == '1':
         final = tokens[IND_SP_COMM]
+        lineNo += tokens[IND_SP_COMM][3]
         tokenName = TokenNames[IND_SP_COMM]
     elif state[IND_INT] == '1' and state[IND_FP] == '1' and state[IND_OP] == '1':
         final = tokens[IND_OP]
@@ -129,7 +130,7 @@ def isSpaceOrComm():
                     str[fp]
                     return ('', fp, state, numLines(str[:fp]))
                 except(IndexError):
-                    return ('', EOF, YES_SP_OR_COMM, numLines(str[:fp]))
+                    return ('', EOF, state, numLines(str[:fp]))
 
     except(IndexError):
         return ('', EOF, NONE, -1)

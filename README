@@ -6,11 +6,11 @@ Team:
 
 Code details:
 
-    1. DFA.py file contains the dfa simulator with all the dfa implementations
+    1. dfa.py file contains the dfa simulator with all the dfa implementations
 
-    2. Scanner.py file contains functions used by dfa simulator to get input
+    2. scanner.py file contains functions used by dfa simulator to get input
 
-    3. Driver.py is the main function that needs to be run in the command line along 
+    3. driver.py is the main function that needs to be run in the command line along 
         with a test file as argument which must reside in the tests folder.
 
             format of command:  python Driver.py tests/[fileName].txt
@@ -19,7 +19,7 @@ Code details:
 
                                 output/output_[fileName].txt
 
-    4. Constants.py basically contains the states, token numbers and names of all tokens
+    4. constants.py basically contains the states, token numbers and names of all tokens
 
     5. utils.py contains all utility functions used in different modules.
 
