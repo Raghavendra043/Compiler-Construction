@@ -70,7 +70,7 @@ def DFA():
     )
 '''
         
-# DFA for matching spaces & comments. (Format of Comments same as that of python's single line comments)
+# DFA for matching spaces & comments. Format of Comments same as that of C's multi-line comments ( /* ... */ )
 # The tokens returned are not printed rather they are used in keeping track of line numbers.
 def isSpaceOrComm():
     state = SP_OR_COMM

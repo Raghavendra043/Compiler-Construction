@@ -1,0 +1,11 @@
+void func1(int x, floay y){
+/* a function that 
+gives the value of x + y */
+
+float z;
+z := (float)x + y;
+
+printf("The value of \"z\" is: ", z);
+return z;
+
+}
