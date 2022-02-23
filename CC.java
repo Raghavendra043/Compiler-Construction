@@ -16,8 +16,12 @@ public class CC {
                 ArrayList<String> Token = new ArrayList<String>();
                 System.out.println("Line :"+line);
                 TokenType token =  new TokenType(S,line);
+                
                 System.out.println("Code : "+S);
                 token.Token();
+                for(int i = 0;i<token.Output.size();i++ ){
+                    System.out.println(token.Output.get(i));
+                }
                 System.out.print("\n---------------\n\n");
             }
         } 
@@ -76,9 +80,11 @@ class TokenType {
                     System.out.println(this.latest);
                     this.latest = "int";
                     System.out.println(this.S.substring(start, end)+" is an int");
+                    this.Output.add("Token 175, string "+this.S.substring(start, end)+", line number : "+this.line);
                 } else if(isFloat(this.S.substring(start, end))){
                     this.latest = "float";
                     System.out.println(this.S.substring(start, end)+" is a float");
+                    this.Output.add("Token 176, string "+this.S.substring(start, end)+", line number : "+this.line);
                 } else{
                     if(start==end || (this.pos<this.S.length() && getCurrent() == ' ')){}else {
                     System.out.println("%"+this.S.substring(start, end)+"%is nothing"+start+","+end+","+this.pos);}
@@ -103,6 +109,8 @@ class TokenType {
         for(int i =0; i < keywords.length; i++) {
         if (this.S.substring(a, b).equals(keywords[i])) {
             System.out.println("The Keyword " + keywords[i] +" is found in given string");
+            int y = (i+1)* 128 ;
+                this.Output.add("Token "+y+", string "+ keywords[i] +", line number : "+this.line);
             return true;
         } 
         
@@ -138,6 +146,8 @@ class TokenType {
         }
 		if( p == b-a ) {
 			System.out.println(this.S.substring(a, b) + " is a identifier");
+            int y = this.S.charAt(this.pos) * 10 ;
+                this.Output.add("Token "+y+", string "+this.S.substring(a, b)+", line number : "+this.line);
             return true;
 		}
 
@@ -152,6 +162,8 @@ class TokenType {
             if (this.pos+1 < this.S.length() && this.S.charAt(this.pos+1)=='=')
             {
             System.out.println(this.S.charAt(this.pos)+"= is a operator at position "+this.pos);
+            //int y = this.S.charAt(this.pos) * 10 ;
+                this.Output.add("Token 123, string "+this.S.charAt(this.pos)+",= line number : "+this.line);
             check = 1;
             this.pos+=1;
             }
@@ -161,8 +173,8 @@ class TokenType {
                     check = 0;
                 }else{
                 System.out.println(this.S.charAt(this.pos)+" is a operator at position "+this.pos);	
-                int y = this.S.charAt(this.pos) * 10 ;
-                this.Output.add("Token "+y+", string "+this.S.charAt(this.pos)+", line number : "+this.line);
+                //int y = this.S.charAt(this.pos) * 10 ;
+                this.Output.add("Token 124, string "+this.S.charAt(this.pos)+", line number : "+this.line);
                 check+=1;}
             }
             
@@ -171,6 +183,8 @@ class TokenType {
             if (this.pos+1 < this.S.length() && this.S.charAt(this.pos+1)=='=')
             {
             System.out.println(this.S.charAt(this.pos)+"= is a operator at position "+this.pos);
+            //int y = this.S.charAt(this.pos) * 10 ;
+                this.Output.add("Token 125, string "+this.S.charAt(this.pos)+",= line number : "+this.line);
             check+=1;
             this.pos+=1;
             }
@@ -180,6 +194,8 @@ class TokenType {
                     check = 0;
                 }else{
                 System.out.println(this.S.charAt(this.pos)+" is a operator at position "+this.pos);	
+                //int y = this.S.charAt(this.pos) * 10 ;
+                this.Output.add("Token 126, string "+this.S.charAt(this.pos)+", line number : "+this.line);
                 check+=1;}
             }       
             break;    
@@ -187,12 +203,14 @@ class TokenType {
             if (this.pos+1 < this.S.length() && this.S.charAt(this.pos+1)=='=')
             {
             System.out.println(this.S.charAt(this.pos)+"= is a operator at position "+this.pos);
+            this.Output.add("Token 127, string "+this.S.charAt(this.pos)+",= line number : "+this.line);
             check+=1;
             this.pos+=1;
             }
             else
             {
             System.out.println(this.S.charAt(this.pos)+" is a operator at position "+this.pos);	
+            this.Output.add("Token 128, string "+this.S.charAt(this.pos)+", line number : "+this.line);
             check+=1;
             }       
             break;          
@@ -200,12 +218,14 @@ class TokenType {
             if (this.pos+1 < this.S.length() && this.S.charAt(this.pos+1)=='=')
             {
             System.out.println(this.S.charAt(this.pos)+"= is a operator at position "+this.pos);
+            this.Output.add("Token 129, string "+this.S.charAt(this.pos)+",= line number : "+this.line);
             check+=1;
             this.pos+=1;
             }
             else
             {
             System.out.println(this.S.charAt(this.pos)+" is a operator at position "+this.pos);	
+            this.Output.add("Token 130, string "+this.S.charAt(this.pos)+", line number : "+this.line);
             check+=1;
             } 
             break;    
@@ -213,12 +233,14 @@ class TokenType {
             if (this.pos+1 < this.S.length() && this.S.charAt(this.pos+1)=='=')
             {
             System.out.println(this.S.charAt(this.pos)+"= is a operator at position "+this.pos);
+            this.Output.add("Token 131, string "+this.S.charAt(this.pos)+",= line number : "+this.line);
             check+=1;
             this.pos+=1;
             }
             else
             {
             System.out.println(this.S.charAt(this.pos)+" is a operator at position "+this.pos);	
+            this.Output.add("Token 132, string "+this.S.charAt(this.pos)+", line number : "+this.line);
             check+=1;
             }  
             break;
@@ -226,12 +248,14 @@ class TokenType {
             if (this.pos+1 < this.S.length() && this.S.charAt(this.pos+1)=='=')
             {
             System.out.println(this.S.charAt(this.pos)+"= is a operator at position "+this.pos);
+            this.Output.add("Token 133, string "+this.S.charAt(this.pos)+",= line number : "+this.line);
             check+=1;
             this.pos+=1;
             }
             else
             {
             System.out.println(this.S.charAt(this.pos)+" is a operator at position "+this.pos);	
+            this.Output.add("Token 134, string "+this.S.charAt(this.pos)+", line number : "+this.line);
             check+=1;
             }  
             break;   
@@ -239,12 +263,14 @@ class TokenType {
             if (this.pos+1 < this.S.length() && this.S.charAt(this.pos+1)=='=')
             {
             System.out.println(this.S.charAt(this.pos)+"= is a operator at position "+this.pos);
+            this.Output.add("Token 135, string "+this.S.charAt(this.pos)+",= line number : "+this.line);
             check+=1;
             this.pos+=1;
             }
             else
             {
-            System.out.println(this.S.charAt(this.pos)+" is a operator at position "+this.pos);	
+            System.out.println(this.S.charAt(this.pos)+" is a operator at position "+this.pos);
+            this.Output.add("Token 136, string "+this.S.charAt(this.pos)+", line number : "+this.line);	
             check+=1;
             }  
             break;
@@ -252,12 +278,14 @@ class TokenType {
             if (this.pos+1 < this.S.length() && this.S.charAt(this.pos+1)=='=')
             {
             System.out.println(this.S.charAt(this.pos)+"= is a operator at position "+this.pos);
+            this.Output.add("Token 137, string "+this.S.charAt(this.pos)+",= line number : "+this.line);
             check+=1;
             this.pos+=1;
             }
             else
             {
             System.out.println(this.S.charAt(this.pos)+" is a operator at position "+this.pos);	
+            this.Output.add("Token 138, string "+this.S.charAt(this.pos)+", line number : "+this.line);
             check+=1;
             }  
             break;   
@@ -265,29 +293,34 @@ class TokenType {
             if (this.pos+1 < this.S.length() && this.S.charAt(this.pos+1)=='=')
             {
             System.out.println(this.S.charAt(this.pos)+"= is a operator at position "+this.pos);
+            this.Output.add("Token 139, string "+this.S.charAt(this.pos)+",= line number : "+this.line);
             check+=1;
             this.pos+=1;
             }
             else
             {
             System.out.println(this.S.charAt(this.pos)+" is a operator at position "+this.pos);	
+            this.Output.add("Token 140, string "+this.S.charAt(this.pos)+", line number : "+this.line);
             check+=1;
             }  
             break;   
         case '?':    
             System.out.println(this.S.charAt(this.pos)+" is a operator at position "+this.pos); 
+            this.Output.add("Token 141, string "+this.S.charAt(this.pos)+", line number : "+this.line);
             check+=1;
             break;
         case '=':    
             if (this.pos+1 < this.S.length() && this.S.charAt(this.pos+1)=='=')
             {
             System.out.println(this.S.charAt(this.pos)+"= is a operator at position "+this.pos);
+            this.Output.add("Token 142, string "+this.S.charAt(this.pos)+",= line number : "+this.line);
             check+=1;
             this.pos+=1;
             }
             else
             {
             System.out.println(this.S.charAt(this.pos)+" is a operator at position "+this.pos);	
+            this.Output.add("Token 143, string "+this.S.charAt(this.pos)+", line number : "+this.line);
             check+=1;
             }  
             break;  
@@ -295,6 +328,7 @@ class TokenType {
             if (this.pos+1 < this.S.length() && this.S.charAt(this.pos+1)=='&')
             {
             System.out.println(this.S.charAt(this.pos)+"& is a operator at position "+this.pos);
+            this.Output.add("Token 144, string "+this.S.charAt(this.pos)+",& line number : "+this.line);
             check+=1;
             this.pos+=1;
             }
@@ -306,6 +340,7 @@ class TokenType {
             if (this.pos+1 < this.S.length() && this.S.charAt(this.pos+1)=='|')
             {
             System.out.println(this.S.charAt(this.pos)+"| is a operator at position "+this.pos);
+            this.Output.add("Token 145, string "+this.S.charAt(this.pos)+",| line number : "+this.line);
             check+=1;
             this.pos+=1;
             }
@@ -327,35 +362,43 @@ class TokenType {
         switch(this.S.charAt(this.pos))
         {
             case '{':    
-                System.out.println(this.S.charAt(this.pos)+" is a delimiter at position "+this.pos);   
+                System.out.println(this.S.charAt(this.pos)+" is a delimiter at position "+this.pos);  
+                this.Output.add("Token 146, string "+this.S.charAt(this.pos)+", line number : "+this.line); 
                 check+=1;
                 break;    
             case '}':    
-                System.out.println(this.S.charAt(this.pos)+" is a delimiter at position "+this.pos);      
+                System.out.println(this.S.charAt(this.pos)+" is a delimiter at position "+this.pos);  
+                this.Output.add("Token 147, string "+this.S.charAt(this.pos)+", line number : "+this.line);    
                 check+=1;
                 break;    
             case '[':    
-                System.out.println(this.S.charAt(this.pos)+" is a delimiter at position "+this.pos);      
+                System.out.println(this.S.charAt(this.pos)+" is a delimiter at position "+this.pos);    
+                this.Output.add("Token 148, string "+this.S.charAt(this.pos)+", line number : "+this.line);  
                 check+=1;
                 break;         
             case ']':    
-                System.out.println(this.S.charAt(this.pos)+" is a delimiter at position "+this.pos);   
+                System.out.println(this.S.charAt(this.pos)+" is a delimiter at position "+this.pos);
+                this.Output.add("Token 149, string "+this.S.charAt(this.pos)+", line number : "+this.line);   
                 check+=1;
                 break;    
             case '(':    
                 System.out.println(this.S.charAt(this.pos)+" is a delimiter at position "+this.pos);
+                this.Output.add("Token 150, string "+this.S.charAt(this.pos)+", line number : "+this.line);
                 check+=1;
                 break;   
             case ')':    
                 System.out.println(this.S.charAt(this.pos)+" is a delimiter at position "+this.pos);  
+                this.Output.add("Token 151, string "+this.S.charAt(this.pos)+", line number : "+this.line);
                 check+=1;
                 break;    
             case ';':    
                 System.out.println(this.S.charAt(this.pos)+" is a delimiter at position "+this.pos);   
+                this.Output.add("Token 152, string "+this.S.charAt(this.pos)+", line number : "+this.line);
                 check+=1;
                 break; 
             case ',':    
                 System.out.println(this.S.charAt(this.pos)+" is a delimiter at position "+this.pos);    
+                this.Output.add("Token 153, string "+this.S.charAt(this.pos)+", line number : "+this.line);
                 check+=1;
                 break; 
         }
@@ -509,11 +552,13 @@ class TokenType {
             }
             if(f==1){
                 System.out.println(this.S.substring(start, end)+"& is a String literal");
+                this.Output.add("Token 179, string "+this.S.substring(start, end)+", line number : "+this.line);
                 break;
             }
         }
         if(f!=1){
             System.out.println("Error");
+            this.Output.add("Error found at line number : "+this.line+" string : "+this.S.substring(start, end));
         }
 	}
 	
