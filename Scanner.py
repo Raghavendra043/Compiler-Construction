@@ -1,6 +1,3 @@
-from numpy import inexact
-
-
 str = None
 
 def bindStream(f):

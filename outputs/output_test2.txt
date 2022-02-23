@@ -1,5 +1,5 @@
 --Error at Line 1:
-	#this is an example # of a comment  
+	#this is not an example # of a comment  
 Line 3  Token 4  < Keyword   string >
 Line 3  Token 10  < Identifier   str >
 Line 3  Token 21  < Operator   := >
@@ -31,3 +31,13 @@ Line 9  Token 28  < Integer   4 >
 Line 9  Token 11  < Operator   + >
 Line 9  Token 28  < Integer   2 >
 Line 9  Token 36  < Delimiter   ; >
+Line 11  Token 1  < Keyword   int >
+Line 11  Token 10  < Identifier   y >
+Line 11  Token 21  < Operator   := >
+Line 11  Token 29  < Floating Point   2.3 >
+Line 11  Token 36  < Delimiter   ; >
+Line 12  Token 10  < Identifier   fact >
+Line 12  Token 34  < Delimiter   ( >
+Line 12  Token 10  < Identifier   y >
+Line 12  Token 35  < Delimiter   ) >
+Line 12  Token 36  < Delimiter   ; >

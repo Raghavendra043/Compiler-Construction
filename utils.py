@@ -16,7 +16,6 @@ def numLines(str):
         if str[fp] == '\n':
             count += 1
         fp+=1
-    
     return count
 
 def binUtil(str):

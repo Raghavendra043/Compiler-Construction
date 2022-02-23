@@ -1,4 +1,3 @@
-from os import stat
 from Constants import *
 from utils import binUtil, tokenNum, numLines
 from Scanner import getNext

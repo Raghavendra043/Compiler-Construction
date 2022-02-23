@@ -23,9 +23,9 @@ if __name__ == '__main__':
                 lineNo += temp[1]
                 tokenName = temp[2]
                 
-                # When none dfas match, it uses panic mode recovery 
-                # to skip the line and move to the next line if there is one.
                 if nextToken == None:   
+                    # When none dfas match, it uses panic mode recovery 
+                    # to skip the line and move to the next line if there is one.
                     lp = DFA.panic_mode()
                     o.write('--Error at Line '+str(lineNo)+
                             ':\n\t'+errorRead()+'\n')
