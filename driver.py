@@ -1,5 +1,5 @@
 import sys
-import dfa
+import DFA
 from Scanner import bindStream, setLP, errorRead
 from Constants import EOF
 from utils import trim
@@ -18,7 +18,7 @@ if __name__ == '__main__':
                 setLP(lp)
                 # Calls the dfa simulator which returns:
                 # (the token, lineNo(to keep track of line numbers), TokenName)
-                temp = dfa.DFA()
+                temp = DFA.DFA()
                 nextToken = temp[0]
                 lineNo += temp[1]
                 tokenName = temp[2]
@@ -26,7 +26,7 @@ if __name__ == '__main__':
                 # When none dfas match, it uses panic mode recovery 
                 # to skip the line and move to the next line if there is one.
                 if nextToken == None:   
-                    lp = dfa.panic_mode()
+                    lp = DFA.panic_mode()
                     o.write('--Error at Line '+str(lineNo)+
                             ':\n\t'+errorRead()+'\n')
                     if lp == -1:

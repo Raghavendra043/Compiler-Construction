@@ -1,0 +1,33 @@
+--Error at Line 1:
+	#this is an example # of a comment  
+Line 3  Token 4  < Keyword   string >
+Line 3  Token 10  < Identifier   str >
+Line 3  Token 21  < Operator   := >
+--Error at Line 3:
+	"tyih\n 
+Line 4  Token 10  < Identifier   jnjk >
+--Error at Line 4:
+	";
+Line 5  Token 10  < Identifier   void >
+Line 5  Token 10  < Identifier   main >
+Line 5  Token 34  < Delimiter   ( >
+Line 5  Token 10  < Identifier   void >
+Line 5  Token 35  < Delimiter   ) >
+Line 5  Token 30  < Delimiter   { >
+Line 6  Token 1  < Keyword   int >
+Line 6  Token 10  < Identifier   x >
+Line 6  Token 36  < Delimiter   ; >
+Line 7  Token 10  < Identifier   t >
+--Error at Line 7:
+	^ := 2.0.0;
+Line 8  Token 10  < Identifier   x >
+Line 8  Token 21  < Operator   := >
+Line 8  Token 11  < Operator   + >
+Line 8  Token 28  < Integer   1004500 >
+Line 8  Token 36  < Delimiter   ; >
+Line 9  Token 10  < Identifier   y >
+Line 9  Token 21  < Operator   := >
+Line 9  Token 28  < Integer   4 >
+Line 9  Token 11  < Operator   + >
+Line 9  Token 28  < Integer   2 >
+Line 9  Token 36  < Delimiter   ; >

@@ -1,0 +1,33 @@
+Team:
+    MOHAMMAD SAJJAD SHAIK           2019A7PS0004H
+    RAHUL BATTINA                   2019A7PS0129H
+    NITHIN SAI RAM REDDY VANTEEDU   2019A7PS0146H
+
+
+Code details:
+
+    1. DFA.py file contains the dfa simulator with all the dfa implementations
+
+    2. Scanner.py file contains functions used by dfa simulator to get input
+
+    3. Driver.py is the main function that needs to be run in the command line along 
+        with a test file as argument which must reside in the tests folder.
+
+            format of command:  python Driver.py tests/[fileName].txt
+        
+        The output of a test file will be present in:
+
+                                output/output_[fileName].txt
+
+    4. Constants.py basically contains the states, token numbers and names of all tokens
+
+    5. utils.py contains all utility functions used in different modules.
+
+
+
+A few points related to the working of code:
+
+    1. If at any point the dfa doesn't match any of the tokens(lexical error),
+        Panic Mode Recovery is engaged and the rest of the line will be skipped.
+
+ 
