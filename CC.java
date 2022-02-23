@@ -15,7 +15,7 @@ public class CC {
                 String S = s.nextLine();
                 ArrayList<String> Token = new ArrayList<String>();
                 System.out.println("Line :"+line);
-                TokenType token =  new TokenType(S);
+                TokenType token =  new TokenType(S,line);
                 System.out.println("Code : "+S);
                 token.Token();
                 System.out.print("\n---------------\n\n");
@@ -33,9 +33,13 @@ class TokenType {
     String S;
     int pos = 0;
     String latest;
+    ArrayList<String> Output;
+    int line;
 
-    TokenType (String S){
+    TokenType (String S, int line){
         this.S =  S;
+        this.Output = new ArrayList<String>();
+        this.line = line;
     }
     public int getCurrent() {
         return this.S.charAt(this.pos);
@@ -67,7 +71,9 @@ class TokenType {
             if(state == 1){
                 if(isKeyword(start, end)){
                 } else if(isIdentifier(start, end)){ this.latest = "id";
+                    System.out.println("checking %"+this.S.substring(start, end)+"%");
                 } else if(isInt(this.S.substring(start, end))){
+                    System.out.println(this.latest);
                     this.latest = "int";
                     System.out.println(this.S.substring(start, end)+" is an int");
                 } else if(isFloat(this.S.substring(start, end))){
@@ -155,6 +161,8 @@ class TokenType {
                     check = 0;
                 }else{
                 System.out.println(this.S.charAt(this.pos)+" is a operator at position "+this.pos);	
+                int y = this.S.charAt(this.pos) * 10 ;
+                this.Output.add("Token "+y+", string "+this.S.charAt(this.pos)+", line number : "+this.line);
                 check+=1;}
             }
             
