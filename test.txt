@@ -1,6 +1,8 @@
 # this is an example # of a comment  
 
 int fact( int n) {
+int a++;
+int a= -12;
 if (n <= 1)
 return 1;
 else

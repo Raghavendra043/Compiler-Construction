@@ -168,8 +168,11 @@ class TokenType {
             }
             else
             {
+                if(this.pos+1<this.S.length() && isInt( String.valueOf((this.S.charAt(this.pos+1)) )  ) && this.latest =="op" && this.S.charAt(this.pos-1) == ' '){
+                    check = 0;
+                }else{
                 System.out.println(this.S.charAt(this.pos)+" is a operator at position "+this.pos);	
-                check+=1;
+                check+=1;}
             }       
             break;    
         case '*':    
