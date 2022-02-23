@@ -1,1 +1,26 @@
-int a= +12;
+# this is an example # of a comment  
+
+int fact( int n) {
+int a++;
+int a = +12;
+if (n <= 1)
+return 1;
+else
+bruh("this is a string literal 
+new line print";
+printf("This is a fuck"  );
+return n*fact(n-1);
+}
+void main(void) {
+int x;
+ t^ = 2.0.0;
+int x = -1004500.098;
+y=4+2;
+z = a+23;
+while (x <= 10) {
+write(x);
+write(fact(x));
+writeln();
+x = x +1;
+}
+}

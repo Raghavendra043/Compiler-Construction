@@ -2,6 +2,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.text.StyledEditorKit.StyledTextAction;
+
 public class CC {
 
     public static void main(String agrs[]){
@@ -427,52 +429,64 @@ class TokenType {
         for(int j=0;j<s.length();j++){
             int Ch = s.charAt(j);
             switch(state){
-                case 0: {
+                case 0:{
                     if(Ch == 48){
+                        state = 1;
+                    }else if(Ch>48 && Ch<=57){
+                        state = 3;
+                    }else if(Ch == '+' || Ch=='-'){
+                        state = 5;
+                    }
+                    break;
+                }
+                case 1:{
+                    if(Ch == '.'){
                         state = 2;
-                    } else if(Ch > 48 && Ch<=57){
-                        state = 1;
-                    } else if(Ch == 46){
-                        state = 3;
-                    }
-                    break;
-                }
-                case 1: {
-                    if(Ch >=48 && Ch<=57){
-                        state = 1;
-                    } else if(Ch == 46){
-                        state = 3;
-                    }
-                    else {
-                        state = -1;   
-                    } 
-                    break;
-                }
-                case 2: {
-                    if(Ch ==48){
+                    }else{
                         state = -1;
-                    } else if(Ch>48 && Ch<=57){
-                        state = 1;
-                    } else if(Ch == 46){    
-                        state = 3;
+                    }
+                    break;
+                } 
+                case 2:{
+                    if(Ch>=48 && Ch<=57){
+                        state = 2;
+                    } else {
+                        state = -1;
                     }
                     break;
                 }
                 case 3:{
-                    if(Ch >=48 && Ch<=57){
+                    if(Ch>=48 && Ch<=57){
                         state = 3;
-                    } else {
-                        state = -1;   
-                    } 
+                    } else if(Ch == '.'){
+                        state = 4;
+                    }
                     break;
                 }
-                case -1:{
-                    return false;
+                case 4:{
+                    if(Ch>=48 && Ch<=57){
+                        state =4;
+                    }else {
+                        state = -1;
+                    }
+                    break;
+                } 
+                case 5:{
+                    if(Ch>48 && Ch<=57){
+                        state = 3;
+                    } else if(Ch == 48){
+                        state =1;
+                    } else {
+                        state = -1;
+                    }
                 }
+            }
+            if(state == -1){
+                break;
             }
 
         }
-        if(state != -1 && state != 0){
+        if(state == 2 || state == 4){
             return true;
         }
 		return false;
