@@ -1,6 +1,7 @@
-# this is an example # of a comment  
+#this is an example # of a comment  
 
-string str := "tyih\n jnjk";
+string str := "tyih\n 
+jnjk";
 void main(void) {
 int x;
  t^ := 2.0.0;

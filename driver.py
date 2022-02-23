@@ -1,6 +1,6 @@
 import sys
 import dfa
-from Scanner import bindStream, setLP
+from Scanner import bindStream, setLP, errorRead
 from Constants import EOF
 
 if __name__ == '__main__':
@@ -23,6 +23,8 @@ if __name__ == '__main__':
                 # to skip the line and move to the next line if there is one.
                 if nextToken == None:   
                     lp = dfa.panic_mode()
+                    o.write('----Error at Line '+str(lineNo)+
+                            ': '+errorRead()+'\n')
                     if lp == -1:
                         eof = 1
                     else:
