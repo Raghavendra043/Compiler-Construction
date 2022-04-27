@@ -1,0 +1,38 @@
+S' -> S
+S -> Main ( ) { Body Ret } S
+S -> $
+Main -> DT IDENTIFIER
+Main -> DT MAIN
+DT -> FLOAT
+DT -> INT
+DT -> BOOL
+Body -> for ( Statement ; Condition ; Statement ) { Body } Body
+Body ->  if ( Condition ) { Body } Else Body
+Body ->  Statement ; Body
+Body ->  bruh ( SL ) ; Body
+Body ->  input ( IDENTIFIER , SL ) ; Body
+Body ->  while ( Condition ) { Body } ; Body
+Body ->  $
+Else -> else { Body }
+Else -> $
+Statement -> DT IDENTIFIER Init
+Statement -> IDENTIFIER = Exp
+Statement -> Unary IDENTIFIER
+Statement -> IDENTIFIER Unary
+Unary -> ++
+Unary -> --
+Value -> INT
+Value -> FLOAT
+Value -> IDENTIFIER
+Condition -> Value R Value
+R -> >
+R -> <
+R -> <=
+R -> >=
+R -> ==
+R -> !=
+Ret -> return 0 ;
+Ret -> $
+Exp -> Exp Value Z
+Exp -> Z
+Z -> Value
